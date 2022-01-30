@@ -40,16 +40,16 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 
 
 %prep
-%autosetup
+%autosetup -p1
 rm -rf third_party/rapidjson
 
 %build
-%cmake
-
-%make_build
+export CLANG_MAJOR_VERSION=$(clang --version|head -1|awk '{print $3}'|awk -F'.' '{print $1}')
+%cmake -DCLANG_LINK_CLANG_DYLIB=ON -DCLANG_RESOURCE_DIR=%{_libdir}/clang/$CLANG_MAJOR_VERSION
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %files
 %{_bindir}/%{name}

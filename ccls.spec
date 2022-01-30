@@ -17,7 +17,6 @@ BuildRequires:  rapidjson-devel
 BuildRequires:  zlib-devel
 
 Requires:       llvm >= 7.0
-%{requires_eq clang}
 
 Provides:       bundled(siphash)
 Provides:       bundled(macro_map)

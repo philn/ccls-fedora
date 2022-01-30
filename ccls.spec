@@ -44,14 +44,12 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 rm -rf third_party/rapidjson
 
 %build
-mkdir build && pushd build
-%cmake ..
+%cmake
 
 %make_build
-popd
 
 %install
-%make_install -C build
+%make_install
 
 %files
 %{_bindir}/%{name}
